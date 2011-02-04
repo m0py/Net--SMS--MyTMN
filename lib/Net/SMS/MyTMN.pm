@@ -115,8 +115,8 @@ sub sms_mytmn {
     $mech->get('http://www.tmn.pt:80/portal/site/tmn');
 
     $mech->submit_form(
-        form_number => 1,
-        fields      => {
+        'form_name' => 'frmLogin',
+        'fields'    => {
             'usr' => $username,
             'pwd' => $password,
         },
@@ -204,7 +204,7 @@ sub _valid {
 
     return _errors(1)
       unless $self->{'username'}
-          && $self->{'username'} =~ /^96\d{7}$/;
+          && $self->{'username'} =~ /^9(6|2)\d{7}$/;
 
     return _errors(2)
       unless $self->{'password'}
